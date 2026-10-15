@@ -1,0 +1,19 @@
+---
+import { projects } from '../data/projects';
+import ProjectRow from './ProjectRow.astro';
+---
+
+<section id="projects" class="section" aria-labelledby="projects-heading">
+  <div class="container">
+    <h2 id="projects-heading" class="section-label">Projects</h2>
+    <ol class="project-list">
+      {projects.map((project, index) => <ProjectRow {...project} index={index + 1} />)}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .project-list {
+    list-style: none;
+  }
+</style>

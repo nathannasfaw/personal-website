@@ -20,3 +20,13 @@ Consult these guides before working on related tasks:
 - [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
 - [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+
+
+## Project rules
+- Personal portfolio site for Nathan Asfaw, live at nathanasfaw.com
+- Astro static site. Output must stay "static". Do NOT add the @astrojs/cloudflare adapter or any SSR.
+- Deployed to Cloudflare Workers via wrangler.jsonc (assets from ./dist). Do not modify wrangler.jsonc.
+- Every push to main auto-deploys, so `npm run build` must pass before committing.
+- Ship zero client-side JavaScript unless a feature truly needs it.
+- Must be responsive (mobile first), accessible (semantic HTML, alt text, good contrast), and fast.
+- Keep content in data/markdown files, separate from layout components.

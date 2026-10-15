@@ -1,0 +1,47 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="container">
+    <h1 id="hero-heading">{site.greeting}</h1>
+    <p class="intro">
+      {site.intro}{' '}
+      <a href="#about">read more</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+    min-height: 80svh;
+    padding-block: var(--space-16);
+  }
+
+  h1 {
+    font-size: var(--text-display);
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+
+  .intro {
+    margin-top: var(--space-8);
+    max-width: 65ch;
+    color: var(--color-muted);
+    font-size: clamp(var(--text-body), 1.6vw, 1.125rem);
+    letter-spacing: 0.04em;
+  }
+
+  .intro a {
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+
+  @media (min-width: 48rem) {
+    .hero {
+      min-height: calc(100svh - var(--header-height));
+    }
+  }
+</style>

@@ -1,0 +1,126 @@
+---
+import { site, sections } from '../data/site';
+---
+
+<header class="site-header">
+  <div class="bar">
+    <a class="wordmark" href="/">{site.name}</a>
+
+    <nav aria-label="Page sections">
+      <ul>
+        {
+          sections.map((section) => (
+            <li>
+              <a href={`#${section.id}`}>{section.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <a class="button" href={site.resume}>Resume<span class="sr-only"> (PDF)</span></a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-line);
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+  }
+
+  /* Mobile: wordmark and button on one row, nav scrolls sideways below. */
+  .bar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'mark button'
+      'nav nav';
+    align-items: center;
+    row-gap: var(--space-2);
+    max-width: var(--container);
+    margin-inline: auto;
+    padding: var(--space-4) var(--gutter) var(--space-1);
+  }
+
+  .wordmark {
+    grid-area: mark;
+    font-size: var(--text-md);
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: lowercase;
+  }
+
+  nav {
+    grid-area: nav;
+    overflow-x: auto;
+  }
+
+  nav ul {
+    display: flex;
+    gap: var(--space-6);
+    list-style: none;
+  }
+
+  nav a {
+    display: inline-block;
+    padding-block: var(--space-3);
+    font-size: var(--text-md);
+    text-decoration: none;
+    text-transform: lowercase;
+    white-space: nowrap;
+  }
+
+  nav a:hover,
+  nav a:focus-visible {
+    color: var(--color-ink);
+    text-decoration: underline;
+  }
+
+  .button {
+    grid-area: button;
+    display: inline-block;
+    padding: var(--space-3) var(--space-5);
+    border: 1.5px solid var(--color-ink);
+    font-size: var(--text-md);
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    text-transform: lowercase;
+    transition:
+      background-color 120ms ease,
+      color 120ms ease;
+  }
+
+  .button:hover,
+  .button:focus-visible {
+    background-color: var(--color-ink);
+    color: var(--color-bg);
+  }
+
+  /* Desktop: one sticky row, nav pushed right next to the button. */
+  @media (min-width: 48rem) {
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .bar {
+      display: flex;
+      gap: var(--space-12);
+      height: var(--header-height);
+      padding-block: 0;
+    }
+
+    nav {
+      margin-left: auto;
+      overflow: visible;
+    }
+
+    nav ul {
+      gap: var(--space-8);
+    }
+  }
+</style>

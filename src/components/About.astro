@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import { aboutParagraphs, headshot, teamPhoto } from '../data/about';
+---
+
+<section id="about" class="section" aria-labelledby="about-heading">
+  <div class="container">
+    <h2 id="about-heading" class="section-label">About</h2>
+
+    <div class="intro">
+      <Image
+        class="headshot"
+        src={headshot.src}
+        alt={headshot.alt}
+        widths={[320, 480, 720]}
+        sizes="(min-width: 48rem) 20rem, min(100vw, 22rem)"
+      />
+      <div class="prose">
+        {aboutParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+
+    <figure class="team">
+      <Image
+        src={teamPhoto.src}
+        alt={teamPhoto.alt}
+        widths={[640, 1024, 1600, 2048]}
+        sizes="(min-width: 80rem) 76rem, 100vw"
+      />
+      <figcaption>{teamPhoto.caption}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .intro {
+    display: grid;
+    gap: var(--space-12);
+  }
+
+  .headshot {
+    width: 100%;
+    max-width: 22rem;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .prose {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    max-width: 65ch;
+  }
+
+  .team {
+    margin-top: var(--space-16);
+  }
+
+  .team img {
+    width: 100%;
+  }
+
+  figcaption {
+    margin-top: var(--space-3);
+    color: var(--color-muted);
+    font-size: var(--text-sm);
+  }
+
+  @media (min-width: 48rem) {
+    .intro {
+      grid-template-columns: 20rem minmax(0, 1fr);
+      gap: var(--space-16);
+      align-items: start;
+    }
+  }
+</style>

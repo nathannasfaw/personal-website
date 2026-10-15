@@ -1,0 +1,43 @@
+---
+import { links } from '../data/site';
+---
+
+<ul class="social-links">
+  {
+    links.map((link) => (
+      <li>
+        <a
+          href={link.href}
+          target={link.external ? '_blank' : undefined}
+          rel={link.external ? 'noopener noreferrer' : undefined}
+        >
+          {link.label}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-8);
+    list-style: none;
+  }
+
+  a {
+    display: inline-block;
+    padding-block: var(--space-2);
+    font-family: var(--font-sans);
+    font-size: var(--text-md);
+    text-decoration: none;
+    text-transform: lowercase;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: var(--color-ink);
+    text-decoration: underline;
+  }
+</style>
