@@ -71,12 +71,12 @@ a { color: inherit; }
 .obj .tag {
   position: absolute; left: 50%; top: 100%;
   transform: translate(-50%, 6px) rotate(calc(var(--r) * -1));
-  font: 500 13px/1 var(--sans); letter-spacing: .02em;
-  color: var(--grey); white-space: nowrap;
+  font: 500 11px/1 var(--sans); letter-spacing: .06em;
+  color: var(--ink); white-space: nowrap;
   opacity: 0; transition: opacity .2s ease;
 }
 .obj:hover .tag, .obj:focus-visible .tag { opacity: 1; }
-@media (hover: none) { .obj .tag { opacity: .85; } }
+@media (hover: none) { .obj .tag { opacity: 1; } }
 
 .name {
   position: absolute; left: 50%; top: calc(455 / 900 * 100%);
@@ -114,7 +114,7 @@ a { color: inherit; }
   .name { top: calc(432 / 844 * 100%); }
   .name h1 { font-size: 13.4cqw; }
   .name p { font-size: 3.1cqw; white-space: nowrap; }
-  .obj .tag { font-size: 11px; }
+  .obj .tag { font-size: 9.5px; }
   .o-osmo     { --mx: 85;  --my: 150; --mw: 62;  --mr: -6deg; }
   .o-laptop   { --mx: 262; --my: 130; --mw: 150; --mr: 3deg; }
   .o-phone    { --mx: 100; --my: 305; --mw: 115; --mr: 8deg; }
