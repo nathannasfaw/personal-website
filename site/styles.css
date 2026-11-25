@@ -373,3 +373,23 @@ a { color: inherit; }
 @keyframes name-in {
   from { opacity: 0; transform: translateY(10px); }
 }
+
+/* Name on torn paper: the name is an object like everything else on the table.
+   Hover and the post-welcome nudge both lift and straighten it, like the other objects. */
+.name h1 {
+  background: url("/img/objects/paper.webp") center / 100% 100% no-repeat;
+  padding: 0.42em 0.95em 0.5em;
+  color: var(--ink);
+  font-size: 5.6cqw;
+  transform: rotate(-3deg);
+  filter: drop-shadow(0 3px 2px rgb(0 0 0 / 0.16)) drop-shadow(0 12px 12px rgb(0 0 0 / 0.12));
+}
+.name h1::after { display: none; }
+.name:hover h1, .name:focus-visible h1, .name.nudge h1 {
+  color: var(--ink);
+  transform: rotate(1deg) scale(1.06);
+}
+.name p { margin-top: 1.4em; }
+@media (max-width: 720px) {
+  .name h1 { font-size: 10.6cqw; }
+}
