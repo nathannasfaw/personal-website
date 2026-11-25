@@ -480,3 +480,29 @@ a { color: inherit; }
 @media (max-width: 720px) and (prefers-reduced-motion: reduce) {
   .name.nudge h1, .intro .name.nudge h1 { animation: none; }
 }
+
+/* Phones: green 'click me!' note with a squiggly arrow pointing at the name paper */
+.click-me { display: none; }
+@media (max-width: 720px) {
+  .click-me {
+    display: flex; flex-direction: column; align-items: flex-start;
+    position: absolute; left: 88%; top: 74%;
+    color: var(--green);
+    font: italic 400 19px/1 var(--serif);
+    white-space: nowrap;
+    transform: rotate(3deg);
+    pointer-events: none;
+  }
+  .click-me .squiggle { width: 40px; height: auto; transform: scaleY(-1) rotate(4deg); margin: 0 0 -2px -18px; }
+  .click-me span { transform: rotate(-4deg); margin-left: 6px; }
+  .name p { margin-top: 2.4em; }
+}
+@media (max-width: 720px) and (prefers-reduced-motion: no-preference) {
+  .click-me { animation: click-me-bob 2.4s ease-in-out infinite; }
+  .intro .click-me { animation: click-me-in 500ms ease 1.9s backwards, click-me-bob 2.4s ease-in-out 2.4s infinite; }
+}
+@keyframes click-me-bob {
+  0%, 100% { transform: rotate(3deg) translate(0, 0); }
+  50%      { transform: rotate(3deg) translate(2px, -3px); }
+}
+@keyframes click-me-in { from { opacity: 0; transform: rotate(3deg) translate(6px, -6px); } }
