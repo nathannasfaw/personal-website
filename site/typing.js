@@ -2,6 +2,7 @@
 // Without JavaScript, or with "reduce motion" on, the welcome line simply shows as is.
 (() => {
   const el = document.querySelector(".type-text");
+  const nameLink = document.querySelector(".name");
   if (!el || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const phrases = [
@@ -27,6 +28,11 @@
     await sleep(400);
     for (let i = 0; ; i = (i + 1) % phrases.length) {
       await type(phrases[i]);
+      if (i === 0 && nameLink) {
+        // Welcome line done: pop the name like a button so visitors know to click it.
+        nameLink.classList.add("nudge");
+        setTimeout(() => nameLink.classList.remove("nudge"), 1800);
+      }
       await sleep(i === 0 ? WELCOME_HOLD_MS : HOLD_MS);
       await erase();
       await sleep(300);
