@@ -31,7 +31,7 @@
       if (i === 0 && nameLink) {
         // Welcome line done: pop the name like a button so visitors know to click it.
         nameLink.classList.add("nudge");
-        setTimeout(() => nameLink.classList.remove("nudge"), 1800);
+        setTimeout(() => nameLink.classList.remove("nudge"), 2600);
       }
       await sleep(i === 0 ? WELCOME_HOLD_MS : HOLD_MS);
       await erase();

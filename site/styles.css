@@ -330,11 +330,10 @@ a { color: inherit; }
 @keyframes blink { 50% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .caret { display: none; } }
 
-/* Name "nudge" after the welcome line types out (see typing.js) */
-.name.nudge h1 { color: var(--green); animation: name-pop 700ms cubic-bezier(0.34, 1.56, 0.64, 1); }
-.name.nudge h1::after { width: 100%; left: 0%; }
-@keyframes name-pop {
-  0%   { transform: scale(1); }
-  45%  { transform: scale(1.08); }
-  100% { transform: scale(1); }
+/* Name "nudge" after the welcome line types out (see typing.js):
+   a slow, springy pop that turns green and tilts like the objects. No underline. */
+.name.nudge h1 {
+  color: var(--green);
+  transform: rotate(-2.5deg) scale(1.06);
+  transition: color 700ms ease, transform 900ms cubic-bezier(0.34, 1.35, 0.64, 1);
 }
