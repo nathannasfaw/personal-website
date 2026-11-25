@@ -444,3 +444,20 @@ a { color: inherit; }
 .name:hover p, .name:focus-visible p { opacity: 0; }
 .name p { transition: opacity .2s ease; }
 @media (max-width: 720px) { .name .name-tag { font-size: 9.5px; } }
+
+/* Fixes: let the shimmy play during the first-visit intro too, keep the name paper's
+   landing gentle on phones, and don't let a tap leave the hover "lift" stuck on touch screens. */
+.intro .name.nudge h1 { animation: paper-flutter 950ms cubic-bezier(0.3, 0.7, 0.4, 1); }
+@keyframes place-down-soft {
+  0%   { opacity: 0; transform: translateY(-6px) scale(1.04); }
+  100% { opacity: 1; transform: none; }
+}
+@media (max-width: 720px) and (prefers-reduced-motion: no-preference) {
+  .intro .name .name-paper { animation-name: place-down-soft; animation-duration: 600ms; }
+}
+@media (hover: none) {
+  .name:hover h1 { transform: rotate(-3deg); }
+  .name:hover .name-tag { opacity: 0; }
+  .name:hover p { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .intro .name.nudge h1 { animation: none; } }
