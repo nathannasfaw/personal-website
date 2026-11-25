@@ -428,3 +428,17 @@ a { color: inherit; }
   .intro .name .name-paper { --step: 90ms; }
 }
 @media (prefers-reduced-motion: reduce) { .name.nudge h1 { animation: none; } }
+
+/* 'about me' hover label on the name paper, same style as the object labels */
+.name h1 { position: relative; display: inline-block; }
+.name .name-tag {
+  position: absolute; left: 50%; top: 100%;
+  transform: translate(-50%, 2px) rotate(3deg);
+  font: 500 11px/1 var(--sans); letter-spacing: .06em;
+  color: var(--ink); white-space: nowrap;
+  opacity: 0; transition: opacity .2s ease;
+}
+.name:hover .name-tag, .name:focus-visible .name-tag { opacity: 1; }
+.name:hover p, .name:focus-visible p { opacity: 0; }
+.name p { transition: opacity .2s ease; }
+@media (max-width: 720px) { .name .name-tag { font-size: 9.5px; } }
