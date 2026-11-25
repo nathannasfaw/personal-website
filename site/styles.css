@@ -393,3 +393,6 @@ a { color: inherit; }
 @media (max-width: 720px) {
   .name h1 { font-size: 10.6cqw; }
 }
+
+/* Let the paper's grain show through the letters, like printed ink */
+.name .ink { color: #33261f; opacity: 0.9; mix-blend-mode: multiply; }
