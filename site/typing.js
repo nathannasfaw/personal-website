@@ -25,7 +25,8 @@
 
   async function run() {
     el.textContent = "";
-    await sleep(400);
+    // Wait for the intro (objects landing, name appearing) before typing.
+    await sleep(document.documentElement.classList.contains("intro") ? 1750 : 400);
     for (let i = 0; ; i = (i + 1) % phrases.length) {
       await type(phrases[i]);
       if (i === 0 && nameLink) {
