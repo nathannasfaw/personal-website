@@ -95,7 +95,7 @@ a { color: inherit; }
 .name h1 {
   position: relative;
   display: inline-block;
-  transition: color 400ms cubic-bezier(0.25, 0.8, 0.25, 1), transform .25s ease;
+  transition: color 600ms ease, transform 700ms ease;
 }
 .name h1::after {
   content: "";
