@@ -407,7 +407,7 @@ a { color: inherit; }
 .name h1::after { display: none; }
 .name .name-paper { width: 29.2cqw; height: auto; filter: var(--shadow); }
 .name:hover h1, .name:focus-visible h1 { transform: rotate(1.2deg) scale(1.06); }
-.name.nudge h1 { transform: rotate(-3deg); animation: paper-flutter 650ms cubic-bezier(0.3, 0.7, 0.4, 1); }
+.name.nudge h1 { transform: rotate(-3deg); animation: paper-flutter 950ms cubic-bezier(0.3, 0.7, 0.4, 1); }
 @keyframes paper-flutter {
   0%   { transform: rotate(-3deg); }
   22%  { transform: translateY(-6px) scale(1.04) rotate(-3deg); }
