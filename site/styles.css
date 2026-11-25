@@ -506,3 +506,8 @@ a { color: inherit; }
   50%      { transform: rotate(3deg) translate(2px, -3px); }
 }
 @keyframes click-me-in { from { opacity: 0; transform: rotate(3deg) translate(6px, -6px); } }
+
+/* Keep the name paper a fixed size: without this, the global img max-width: 100% let the
+   shrink-to-fit name block (sized by the typing subtitle) squeeze the paper on phones. */
+.name { width: max-content; }
+.name .name-paper { max-width: none; }
