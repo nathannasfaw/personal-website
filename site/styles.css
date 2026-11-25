@@ -6,6 +6,7 @@
   --ink: #2b1c14;
   --grey: #736e66;
   --line: #dbd6cf;
+  --green: #2f6b3f;
   --paper: #ffffff;
   --serif: "Instrument Serif", Georgia, serif;
   --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -90,7 +91,26 @@ a { color: inherit; }
   white-space: nowrap;
   transition: transform .25s ease;
 }
-.name:hover h1, .name:focus-visible h1 { transform: rotate(-1.5deg); }
+/* Name: turns green with an underline that grows from the center (adapted from Uiverse.io by WhiteNervosa) */
+.name h1 {
+  position: relative;
+  display: inline-block;
+  transition: color 450ms ease, transform 500ms ease;
+}
+.name h1::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  bottom: -0.04em;
+  width: 0%;
+  height: max(2px, 0.035em);
+  border-radius: 999px;
+  background-color: var(--green);
+  transition: width 400ms cubic-bezier(0.25, 0.8, 0.25, 1), left 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.name:hover h1, .name:focus-visible h1 { color: var(--green); }
+.name:hover h1::after, .name:focus-visible h1::after { width: 100%; left: 0%; }
 .name p { margin: .9em 0 0; font: 400 1.1cqw/1.3 var(--sans); color: var(--grey); letter-spacing: .04em; }
 
 /* Desktop positions (from the 1440×900 Figma frame) */
@@ -291,4 +311,29 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
+}
+
+/* Rotating typewriter subtitle (see typing.js) */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.name p { min-height: 1.3em; }
+.caret {
+  display: inline-block;
+  width: 1px; height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: currentColor;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .caret { display: none; } }
+
+/* Name "nudge" after the welcome line types out (see typing.js):
+   a slow, springy pop that turns green and tilts like the objects. No underline. */
+.name.nudge h1 {
+  color: var(--green);
+  transform: rotate(-2.5deg) scale(1.06);
+  transition: color 450ms ease, transform 600ms cubic-bezier(0.34, 1.35, 0.64, 1);
 }
