@@ -511,3 +511,16 @@ a { color: inherit; }
    shrink-to-fit name block (sized by the typing subtitle) squeeze the paper on phones. */
 .name { width: max-content; }
 .name .name-paper { max-width: none; }
+
+/* Phones: smaller name paper so it clears the passport's label, and a smaller, still 'click me!' note */
+@media (max-width: 720px) {
+  .name .name-paper { width: 54cqw; }
+  .click-me { font-size: 15px; left: 86%; top: 70%; }
+  .click-me .squiggle { width: 30px; margin: 0 0 -2px -14px; }
+  .name p { margin-top: 2em; }
+}
+@media (max-width: 720px) and (prefers-reduced-motion: no-preference) {
+  .click-me { animation: none; }
+  .intro .click-me { animation: click-me-fade 400ms ease 1.9s backwards; }
+}
+@keyframes click-me-fade { from { opacity: 0; } }
