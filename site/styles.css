@@ -524,3 +524,8 @@ a { color: inherit; }
   .intro .click-me { animation: click-me-fade 400ms ease 1.9s backwards; }
 }
 @keyframes click-me-fade { from { opacity: 0; } }
+
+/* Arrow drawn pointing the right way in the SVG itself: no CSS flips or rotations */
+@media (max-width: 720px) {
+  .click-me .squiggle { transform: none; width: 30px; height: 33px; margin: 0 0 1px -10px; }
+}
